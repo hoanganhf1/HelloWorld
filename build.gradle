@@ -3,17 +3,26 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: "jp.empressia.glassfish"
 
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
 }
 
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.springframework:spring-core:4.3.9.RELEASE'
+    compile 'org.springframework:spring-web:4.3.9.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.3.9.RELEASE'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    classpath 'gradle.plugin.jp.empressia:jp.empressia.gradle.plugin.glassfish:0.2.5'
 }
 
 war {
